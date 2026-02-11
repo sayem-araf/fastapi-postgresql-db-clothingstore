@@ -5,8 +5,10 @@
 GET {{baseUrl}}/categories
 
 ### Get category by id
-GET {{baseUrl}}/categories/3
+GET {{baseUrl}}/categories/1
 
+### Get all products
+GET {{baseUrl}}/products
 
 ### Create category
 POST {{baseUrl}}/categories
@@ -16,4 +18,38 @@ Content-Type: application/json
   "name": "Gloves"
 }
 
+### Create new user
+POST {{baseUrl}}/users
+Content-Type: application/json
 
+{
+  "name": "John Doe",
+  "email": "john@example.com"
+}
+
+### User login
+POST {{baseUrl}}/users/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com"
+}
+
+### Create order
+POST {{baseUrl}}/orders
+Content-Type: application/json
+
+{
+  "customer_id": 1,
+  "product_id": 1,
+  "quantity": 2
+}
+
+### Get all orders
+GET {{baseUrl}}/orders
+
+### Statistics - Users
+GET {{baseUrl}}/statistics/users
+
+### Statistics - Products
+GET {{baseUrl}}/statistics/products

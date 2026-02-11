@@ -24,10 +24,12 @@ def migrate_schema():
 def seed_sample_data():
     # If tables are still empty, seed sample data
     with get_conn() as conn, conn.cursor() as cur:
-        if cur.execute("SELECT 1 FROM categories").fetchall():
+        cur.execute("SELECT COUNT(*) FROM categories")
+        count = cur.fetchone()[0]
+        if count > 0:
             print("INFO: Tables not empty, skip data seed.")
         else:
-            with open("./db/sample-data.sql") as f:
+            with open("./db/seed.sql") as f:
                 data_sql = f.read()
                 cur.execute(data_sql)
                 print("INFO: Sample data inserted.")
